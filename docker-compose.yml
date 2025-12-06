@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # API Backend
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    environment:
+      # Use host's Ollama (host.docker.internal for Docker Desktop)
+      - OLLAMA_URL=http://host.docker.internal:11434
+      - MODEL_NAME=llama3:8b
+      - API_PORT=8002
+      - DEBUG=true
+      - DEFAULT_CITY=Mumbai
+      - DEFAULT_PINCODE=400001
+      # Enable real-time scraping from actual platforms
+      - USE_REAL_SCRAPERS=true
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8002
+    depends_on:
+      - api
+    restart: unless-stopped
+
+# Uncomment below if you want to run Ollama in Docker (change port to avoid conflict)
+#  ollama:
+#    image: ollama/ollama:latest
+#    ports:
+#      - "11435:11434"  # Map to different host port
+#    volumes:
+#      - ollama_data:/root/.ollama
+#    restart: unless-stopped
+#
+#volumes:
+#  ollama_data:
+

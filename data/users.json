@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "id": "usr_4150f393bb94aa9e",
+      "email": "skofarma@gmail.com",
+      "username": "pkannaiyan",
+      "hashed_password": "6a137bcccc97ff80a17a78fe7c7e7317c6f75f8230df8a7d28f295c8d9a15941",
+      "full_name": "Prakash Kannaiyan",
+      "phone": null,
+      "default_pincode": "400001",
+      "default_city": "Mumbai",
+      "role": "user",
+      "is_active": true,
+      "is_verified": false,
+      "favorite_platforms": [],
+      "notification_enabled": true,
+      "created_at": "2025-12-05 09:24:37.905843",
+      "updated_at": "2025-12-05 09:24:37.906029",
+      "last_login": "2025-12-05 09:24:37.915333"
+    }
+  ],
+  "updated_at": "2025-12-05T09:24:37.915709"
+}

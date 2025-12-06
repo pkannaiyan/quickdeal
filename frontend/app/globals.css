@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Fresh color palette */
+  --mint: #00D9A5;
+  --coral: #FF6B6B;
+  --purple: #8B5CF6;
+  --blue: #3B82F6;
+  --gold: #F59E0B;
+  
+  /* Backgrounds */
+  --bg-primary: #0A0F1C;
+  --bg-secondary: #111827;
+  --bg-card: rgba(17, 24, 39, 0.7);
+  
+  /* Text */
+  --text-primary: #F9FAFB;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+}
+
+body {
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  font-family: 'Outfit', system-ui, sans-serif;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 92, 246, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(0, 217, 165, 0.1), transparent);
+}
+
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
+
+/* Glass card - refined */
+.glass {
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.glass:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* Card variants */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+}
+
+/* Gradient backgrounds */
+.gradient-mint {
+  background: linear-gradient(135deg, #00D9A5 0%, #00B894 100%);
+}
+
+.gradient-coral {
+  background: linear-gradient(135deg, #FF6B6B 0%, #EE5A52 100%);
+}
+
+.gradient-purple {
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+}
+
+.gradient-gold {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #00D9A5 0%, #8B5CF6 50%, #FF6B6B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Platform badges with brand colors */
+.platform-blinkit {
+  background: linear-gradient(135deg, #FFD814 0%, #F5C400 100%);
+  color: #000;
+}
+
+.platform-zepto {
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+}
+
+.platform-instamart {
+  background: linear-gradient(135deg, #FF5200 0%, #E64A00 100%);
+}
+
+.platform-bigbasket {
+  background: linear-gradient(135deg, #84CC16 0%, #65A30D 100%);
+}
+
+.platform-jiomart {
+  background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+}
+
+/* Best deal highlight */
+.deal-highlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.deal-highlight::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #00D9A5, #8B5CF6, #FF6B6B);
+  border-radius: inherit;
+  z-index: -1;
+  animation: rotate-border 3s linear infinite;
+}
+
+@keyframes rotate-border {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Price animations */
+.price-pop {
+  animation: price-pop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes price-pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Savings badge pulse */
+.savings-pulse {
+  animation: savings-pulse 2s ease-in-out infinite;
+}
+
+@keyframes savings-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 217, 165, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px 8px rgba(0, 217, 165, 0);
+  }
+}
+
+/* Shimmer loading */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(139, 92, 246, 0.05) 25%,
+    rgba(139, 92, 246, 0.15) 50%,
+    rgba(139, 92, 246, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #00D9A5 0%, #00B894 100%);
+  color: #000;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 217, 165, 0.3);
+}
+
+.btn-secondary {
+  background: rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #A78BFA;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(139, 92, 246, 0.3);
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+/* Stats card */
+.stat-card {
+  background: rgba(17, 24, 39, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Input styles */
+.input-modern {
+  background: rgba(17, 24, 39, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.input-modern:focus {
+  outline: none;
+  border-color: #00D9A5;
+  box-shadow: 0 0 0 4px rgba(0, 217, 165, 0.15);
+}
+
+/* Navigation */
+.nav-item {
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00D9A5, #8B5CF6);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  width: 80%;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  background: rgba(10, 15, 28, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::before {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  padding: 8px 12px;
+  background: #1F2937;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+.tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Floating label input */
+.floating-label {
+  position: relative;
+}
+
+.floating-label input:focus ~ label,
+.floating-label input:not(:placeholder-shown) ~ label {
+  transform: translateY(-24px) scale(0.85);
+  color: #00D9A5;
+}
+
+/* Badge styles */
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-success {
+  background: rgba(0, 217, 165, 0.15);
+  color: #00D9A5;
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.15);
+  color: #F59E0B;
+}
+
+.badge-danger {
+  background: rgba(255, 107, 107, 0.15);
+  color: #FF6B6B;
+}
+
+.badge-info {
+  background: rgba(139, 92, 246, 0.15);
+  color: #A78BFA;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+
+/* Custom font for prices */
+.font-price {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+/* Glow effects */
+.glow-mint {
+  box-shadow: 0 0 40px rgba(0, 217, 165, 0.3);
+}
+
+.glow-purple {
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+}
+
+.glow-coral {
+  box-shadow: 0 0 40px rgba(255, 107, 107, 0.3);
+}
